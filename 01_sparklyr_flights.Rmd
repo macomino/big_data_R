@@ -92,13 +92,14 @@ Evaluate global performance of the model
 
 # Calculate average gains by predicted decile
 model_deciles <- lapply(model_partition, function(x) {
-  sdf_predict(ml1, x) %>%
+  ml_predict(ml1, x) %>%
     mutate(decile = ntile(desc(prediction), 10)) %>%
     group_by(decile) %>%
     summarize(gain = mean(GAIN)) %>%
     select(decile, gain) %>%
     collect()
 })
+
 
 # Create a summary dataset for plotting
 deciles <- rbind(

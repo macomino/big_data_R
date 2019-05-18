@@ -43,6 +43,7 @@ Para cerrar la sesión con Spark:
 ```{r disconect}
 spark_disconnect(sc)
 
+
 connection_is_open(sc)
 ```
 
